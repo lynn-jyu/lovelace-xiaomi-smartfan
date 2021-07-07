@@ -1,4 +1,4 @@
-class SmartFanXiaomi extends HTMLElement {
+class SmartFanXiaomiP8 extends HTMLElement {
     _t(str){
         if( !this.config ) return str;
         const translate = this.config.translate||{};
@@ -63,6 +63,7 @@ class SmartFanXiaomi extends HTMLElement {
             card.appendChild(ui)
 
             //调整风扇角度事件绑定
+            /*  Not supported on P8
             ui.querySelector('.left').onmouseover = () => {
                 ui.querySelector('.left').classList.replace('hidden','show')
             }
@@ -94,6 +95,7 @@ class SmartFanXiaomi extends HTMLElement {
                 }
                 return false;
             }
+             */
             // 添加风扇角度
             const angleValues = this.angleValues();
             const anglesEL = ui.querySelector('.op-row .var-angles .angles');
@@ -107,15 +109,17 @@ class SmartFanXiaomi extends HTMLElement {
                 input.setAttribute('name', 'angle');
                 input.setAttribute('id', 'angle-'+a);
                 input.value = a;
-                input.onchange = (e)=>{
-                    this.log('angle: ', e.target.value);
-                    hass.callService('fan', 'xiaomi_miio_set_oscillation_angle', {
-                        entity_id: entityId,
-                        angle: a,
-                    });
-                }
+		this.log('NOW ANGLE IS' + a)
+                // p8 does not support change the oscillation_angle  todo
+                //input.onchange = (e)=>{
+                //    this.log('angle: ', e.target.value);
+                //   hass.callService('fan', 'xiaomi_miio_set_oscillation_angle', {
+                //      entity_id: entityId,
+                //     angle: a,
+                // });
+                //}
                 div.append(label, input);
-                anglesEL.append(div);
+                //anglesEL.append(div);
             });
 
             // 定义事件
@@ -144,9 +148,10 @@ class SmartFanXiaomi extends HTMLElement {
                     }catch(ex){
                         this.log('Error setting fan speed: ', ex);
                     }                    
-                    hass.callService('fan', 'set_speed', {
+		    this.log("speed test===="+newSpeed)
+                    hass.callService('fan', 'set_percentage', {
                         entity_id: entityId,
-                        speed: newSpeed
+                        percentage: newSpeed/3*100
                     });
                 }
             }
@@ -175,29 +180,30 @@ class SmartFanXiaomi extends HTMLElement {
             }
             ui.querySelector('.var-rawspeed input[type="range"]').onchange = (e)=>{
                 this.log('set speed by sliding');
-                hass.callService('fan', 'set_speed', {
+                hass.callService('fan', 'set_percentage', {
                     entity_id: entityId,
-                    speed: e.target.value
+                    percentage: e.target.value/3*100
                 });
             }
 
-            ui.querySelector('.var-natural').onclick = () => {
-                this.log('Natural')
-                if (ui.querySelector('.fanbox').classList.contains('active')) {
-                    let u = ui.querySelector('.var-natural')
-                    if (u.classList.contains('active') === false) {this.log('natural active');
-                        u.classList.add('active')
-                        hass.callService('fan', 'xiaomi_miio_set_natural_mode_on', {
-                            entity_id: entityId
-                        });
-                    } else {this.log('natural deactivate');
-                        u.classList.remove('active')
-                        hass.callService('fan', 'xiaomi_miio_set_natural_mode_off', {
-                            entity_id: entityId
-                        });
-                    }
-                }
-            }
+            //  todo p8 does not have natural mode
+            // ui.querySelector('.var-natural').onclick = () => {
+            //     this.log('Natural')
+            //     if (ui.querySelector('.fanbox').classList.contains('active')) {
+            //         let u = ui.querySelector('.var-natural')
+            //         if (u.classList.contains('active') === false) {this.log('natural active');
+            //             u.classList.add('active')
+            //             hass.callService('fan', 'xiaomi_miio_set_natural_mode_on', {
+            //                 entity_id: entityId
+            //             });
+            //         } else {this.log('natural deactivate');
+            //             u.classList.remove('active')
+            //             hass.callService('fan', 'xiaomi_miio_set_natural_mode_off', {
+            //                 entity_id: entityId
+            //             });
+            //         }
+            //     }
+            // }
 
             const oscillateOnClick = () => {
                 this.log('Oscillate')
@@ -223,11 +229,11 @@ class SmartFanXiaomi extends HTMLElement {
                 oscillateOnClick();
             }, ()=>{
                 this.log('holding oscillate button');
-                const ops = ui.querySelectorAll('.op-row .op:not(.toggle)');
-                [].forEach.call(ops, el=>{
-                    el.classList.toggle('hide');
-                });
-                ui.querySelector('.op-row .op.var-angles').classList.toggle('hide');
+               // const ops = ui.querySelectorAll('.op-row .op:not(.toggle)');
+               // [].forEach.call(ops, el=>{
+               //     el.classList.toggle('hide');
+               // });
+               // ui.querySelector('.op-row .op.var-angles').classList.toggle('hide');
 
             });
             ui.querySelector('.var-angles .icon-button').onclick = ()=>{
@@ -265,7 +271,7 @@ class SmartFanXiaomi extends HTMLElement {
             // led_brightness: attrs['led_brightness'],
             led: !!attrs['led_brightness']||attrs['led'],
             delay_off_countdown: attrs['delay_off_countdown'],
-            angle: attrs['angle']
+            angle: attrs['angle']||90
         })
     }
 
@@ -399,7 +405,7 @@ to{transform:perspective(10em) rotateY(40deg)}
 </div>
 <div class="attr">
 <p class="attr-title"><span>Angle</span>(&deg;)</p>
-<p class="attr-value var-angle">120</p>
+<p class="attr-value var-angle">90</p>
 </div>
 <div class="attr">
 <p class="attr-title">Timer</p>
@@ -423,15 +429,15 @@ to{transform:perspective(10em) rotateY(40deg)}
 <span class="btn-title">Oscillate</span>
 </button>
 </div>
-<div class="op var-natural">
-<button>
+<div class="op var-natural" disabled>
+<button disabled>
 <span class="icon-waper">
 <ha-icon icon="mdi:leaf"></ha-icon>
 </span>
-<span class="btn-title">Natural</span>
+<span class="btn-title" style="text-decoration:line-through">Natural</span>
 </button>
 </div>
-<div class="op var-rawspeed hide toggle"><output>1</output><span class="icon-button"><ha-icon icon="mdi:chevron-down"></ha-icon></span><input type="range" max="100" min="1" value="-1" /></div>
+<div class="op var-rawspeed hide toggle"><output>1</output><span class="icon-button"><ha-icon icon="mdi:chevron-down"></ha-icon></span><input type="range" max="3" min="1" value="-1" /></div>
 <div class="op var-angles hide toggle"><span class="icon-button"><ha-icon icon="mdi:chevron-down"></ha-icon></span>
     <div class="angles">
         
@@ -443,8 +449,16 @@ to{transform:perspective(10em) rotateY(40deg)}
     }
 
     // 设置UI值
-    setUI(fanboxa, {title, natural_speed, direct_speed, state,
-        child_lock, oscillating, led, delay_off_countdown, angle
+    setUI(fanboxa, { 
+        title, 
+        natural_speed, 
+        direct_speed,
+        state,
+        child_lock, 
+        oscillating, 
+        led, 
+        delay_off_countdown, 
+        angle
     }) {
 
         fanboxa.querySelector('.var-title').textContent = title
@@ -513,11 +527,12 @@ to{transform:perspective(10em) rotateY(40deg)}
             // iconSpan.innerHTML = '<ha-icon icon="mdi:numeric-0-box-outline"></ha-icon>'
         }
         let direct_speed_int = Number(direct_speed)
+	this.log("direct speed int is " + direct_speed_int)
         
         const speedValues = this.speedValues();
         try{
             if( fanboxa.querySelector('.op-row .var-rawspeed input[type="range"]').value === direct_speed_int ) throw '';
-            fanboxa.querySelector('.op-row .var-rawspeed input[type="range"]').value = direct_speed_int;
+            fanboxa.querySelector('.op-row .var-rawspeed input[type="range"]').value = speedValues[direct_speed_int-1];
             fanboxa.querySelector('.op-row .var-rawspeed input[type="range"]').dispatchEvent(new Event('input', {
                 bubbles: true,
                 cancelable: true,
@@ -564,20 +579,20 @@ to{transform:perspective(10em) rotateY(40deg)}
     speedValues(){
         return (()=>{
             if( this.config && this.config.speeds instanceof Array ) return this.config.speeds;
-            return [1, 35, 70, 100];
+            return [1, 2, 3];
         })().sort((a,b) => { return (a > b?(a==b?0:1):-1); });
     }
 
     angleValues(){
         if( this.config && this.config.angles instanceof Array ) return this.config.angles;
-        return [30, 60, 90, 120, 140];
+        return [90];
     }
 
     // 加入日志开关l
     log() {
-        // console.log(...arguments)
+        console.log(...arguments)
     }
 }
 
 
-customElements.define('smartfan-xiaomi', SmartFanXiaomi);
+customElements.define('smartfan-xiaomi-p8', SmartFanXiaomiP8);

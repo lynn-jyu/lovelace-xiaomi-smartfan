@@ -4,18 +4,18 @@
 Xiaomi Smartmi Fan Lovelace card for HASS/Home Assistant.
 
 +  Supports [HACS](https://github.com/custom-components/hacs) installation
-+  Works seamlessly with the [iwzoo/xiaomi_fan](https://github.com/iwzoo/xiaomi_fan) integration
++  Works seamlessly with the [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) integration
 +  Animations of the fan are made purely with CSS
 +  Hold to adjust fan speed 
-+  Hold to adjust oscillating angle (30, 60, 90, 120, 140) degrees
++  ~~Hold to adjust oscillating angle (30, 60, 90, 120, 140) degrees~ (Not supported on Pedestal Fan P8)
 +  Translation for titles
 
 ## HACS Installation
 1. Navigate to HACS 
 1. Choose "Frontend"
 1. Choose "Custom repositories" from the top right button
-1. Enter "https://github.com/iwzoo/lovelace-xiaomi-smartfan" in "Add custom repository URL", Choose "Lovelace" for "Category"
-1. Find "Xiaomi smartfan Card (Smartmi Fan 1x)"  in "Frontend" and click "Install"
+1. Enter "https://github.com/lynn-jyu/lovelace-xiaomi-smartfan" in "Add custom repository URL", Choose "Lovelace" for "Category"
+1. Find "Xiaomi smartfan Card (Pedestal Fan P8)"  in "Frontend" and click "Install"
 
 
 ## Manual Installation
@@ -46,24 +46,24 @@ Xiaomi Smartmi Fan Lovelace card for HASS/Home Assistant.
     
     
 
-# 小米风扇1x lovelace卡片
+# 小米落地扇(交流电版) lovelace卡片
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
-HA 智米风扇 1x lovelace 卡片
+HA 小米落地扇(交流电版) lovelace 卡片
 
 +  支持 [HACS](https://github.com/custom-components/hacs) 
-+  配合 [iwzoo/xiaomi_fan](https://github.com/iwzoo/xiaomi_fan) 使用
++  配合 [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) 使用
 +  纯CSS 动画效果
 +  长按风速按钮调整风扇速度
-+  长按摆风按钮调整摆风角度(30, 60, 90, 120, 140)度
++  ~~长按摆风按钮调整摆风角度(30, 60, 90, 120, 140)度~(米家落地扇P8不支持)
 +  支持文本多语言
 
 ## HACS 安装
 1. 打开HACS 
 1. 选择“前端”
 1. 右上角下拉菜单选择“自定义存储库”
-1. “添加自定义存储库URL“ 输入 "https://github.com/iwzoo/lovelace-xiaomi-smartfan" , “类别”选择“ "Lovelace" 
-1. 在前端页面找到 "Xiaomi smartfan Card (Smartmi Fan 1x)"  点击 “安装”
+1. “添加自定义存储库URL“ 输入 "https://github.com/lynn-jyu/lovelace-xiaomi-smartfan" , “类别”选择“ "Lovelace" 
+1. 在前端页面找到 "Xiaomi smartfan Card (Pedestal Fan P8)"  点击 “安装”
 
 ## Manual Installation
 1. 下载 `smartfan-xiaomi.js`
@@ -91,18 +91,12 @@ HA 智米风扇 1x lovelace 卡片
     ```
     替换实际的设备id `fan.entity_id`  修改名称`Fan Name`  
     
-    
-## Preview （预览）
-![](preview/1.png)
-
-![](preview/2.png)
-
-![](preview/3.png)
-
 ## Credits
 [fineemb](https://github.com/fineemb) (Original author)
 
-[ikaruswill](https://github.com/ikaruswill/) (forked from)
+[ikaruswill](https://github.com/ikaruswill/) 
+
+[iwzoo](https://github.com/iwzoo/) (forked from)
 
 [shaonianzhentan](https://github.com/shaonianzhentan/)
 
