@@ -1,7 +1,9 @@
 # Xiaomi Fan Lovelace Card
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
-Xiaomi Smartmi Fan Lovelace card for HASS/Home Assistant.
+Xiaomi Pedestal Fan Lovelace card for HASS/Home Assistant.
+
+Only for dmaker.fan.p8.
 
 +  Supports [HACS](https://github.com/custom-components/hacs) installation
 +  Works seamlessly with the [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) integration
@@ -50,6 +52,8 @@ Xiaomi Smartmi Fan Lovelace card for HASS/Home Assistant.
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
 HA 小米落地扇(交流电版) lovelace 卡片
+
+仅支持dmaker.fan.p8
 
 +  支持 [HACS](https://github.com/custom-components/hacs) 
 +  配合 [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) 使用
