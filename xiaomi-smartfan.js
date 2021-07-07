@@ -186,24 +186,26 @@ class SmartFanXiaomiP8 extends HTMLElement {
                 });
             }
 
-            //  todo p8 does not have natural mode
-            // ui.querySelector('.var-natural').onclick = () => {
-            //     this.log('Natural')
-            //     if (ui.querySelector('.fanbox').classList.contains('active')) {
-            //         let u = ui.querySelector('.var-natural')
-            //         if (u.classList.contains('active') === false) {this.log('natural active');
-            //             u.classList.add('active')
-            //             hass.callService('fan', 'xiaomi_miio_set_natural_mode_on', {
-            //                 entity_id: entityId
-            //             });
-            //         } else {this.log('natural deactivate');
-            //             u.classList.remove('active')
-            //             hass.callService('fan', 'xiaomi_miio_set_natural_mode_off', {
-            //                 entity_id: entityId
-            //             });
-            //         }
-            //     }
-            // }
+            /* p8 does not have natural mode
+
+            ui.querySelector('.var-natural').onclick = () => {
+                this.log('Natural')
+                if (ui.querySelector('.fanbox').classList.contains('active')) {
+                    let u = ui.querySelector('.var-natural')
+                    if (u.classList.contains('active') === false) {this.log('natural active');
+                        u.classList.add('active')
+                        hass.callService('fan', 'xiaomi_miio_set_natural_mode_on', {
+                            entity_id: entityId
+                        });
+                    } else {this.log('natural deactivate');
+                        u.classList.remove('active')
+                        hass.callService('fan', 'xiaomi_miio_set_natural_mode_off', {
+                            entity_id: entityId
+                        });
+                    }
+                }
+            }
+            */
 
             const oscillateOnClick = () => {
                 this.log('Oscillate')
@@ -588,9 +590,9 @@ to{transform:perspective(10em) rotateY(40deg)}
         return [90];
     }
 
-    // 加入日志开关l
+    // 加入日志开关
     log() {
-        console.log(...arguments)
+        // console.log(...arguments)
     }
 }
 
