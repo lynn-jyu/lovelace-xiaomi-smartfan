@@ -1,4 +1,4 @@
-# Xiaomi Fan Lovelace Card
+# Xiaomi smartfan Card (Pedestal Fan P8)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
 Xiaomi Pedestal Fan Lovelace card for HASS/Home Assistant.
