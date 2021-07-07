@@ -9,7 +9,7 @@ Only for dmaker.fan.p8.
 +  Works seamlessly with the [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) integration
 +  Animations of the fan are made purely with CSS
 +  Hold to adjust fan speed 
-+  ~~Hold to adjust oscillating angle (30, 60, 90, 120, 140) degrees~ (Not supported on Pedestal Fan P8)
++  <del>Hold to adjust oscillating angle (30, 60, 90, 120, 140) degrees</del> (Not supported on Pedestal Fan P8)
 +  Translation for titles
 
 ## HACS Installation
@@ -59,7 +59,7 @@ HA 小米落地扇(交流电版) lovelace 卡片
 +  配合 [syssi/xiaomi_fan](https://github.com/syssi/xiaomi_fan) 使用
 +  纯CSS 动画效果
 +  长按风速按钮调整风扇速度
-+  ~~长按摆风按钮调整摆风角度(30, 60, 90, 120, 140)度~(米家落地扇P8不支持)
++  <del>长按摆风按钮调整摆风角度(30, 60, 90, 120, 140)度</del>(米家落地扇P8不支持)
 +  支持文本多语言
 
 ## HACS 安装
@@ -94,6 +94,11 @@ HA 小米落地扇(交流电版) lovelace 卡片
         Timer:
     ```
     替换实际的设备id `fan.entity_id`  修改名称`Fan Name`  
+
+
+## Preview （预览）
+
+Basically consistent with [iwzoo](https://github.com/iwzoo/) 's version
     
 ## Credits
 [fineemb](https://github.com/fineemb) (Original author)
