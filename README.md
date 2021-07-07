@@ -22,18 +22,18 @@ Only for dmaker.fan.p8.
 
 ## Manual Installation
 1. Download `smartfan-xiaomi.js`
-1. Copy to `www/plugins/lovelace-xiaomi-smartfan/xiaomi-smartfan.js`
+1. Copy to `www/plugins/lovelace-xiaomi-smartfan-p8/xiaomi-smartfan-p8.js`
 1. Add the following to your Lovelace resources
     ``` yaml
     resources:
-    - url: /local/lovelace-xiaomi-smartfan/xiaomi-smartfan.js
+    - url: /local/lovelace-xiaomi-smartfan-p8/xiaomi-smartfan-p8.js
       type: js
     ```
 1. Add the following to your Lovelace config `views.cards` key
     ```yaml
     - entity: fan.entity_id
       name: Fan Name
-      type: 'custom:smartfan-xiaomi'
+      type: 'custom:smartfan-xiaomi-p8'
       translate: #optional for titles in any language
         Angle: 
         Child Lock:
@@ -71,18 +71,18 @@ HA 小米落地扇(交流电版) lovelace 卡片
 
 ## Manual Installation
 1. 下载 `smartfan-xiaomi.js`
-1. 拷贝 到 `www/plugins/lovelace-xiaomi-smartfan/xiaomi-smartfan.js`
+1. 拷贝 到 `www/plugins/lovelace-xiaomi-smartfan-p8/xiaomi-smartfan-p8.js`
 1. 在lovelace资源添加
     ``` yaml
     resources:
-    - url: /local/lovelace-xiaomi-smartfan/xiaomi-smartfan.js
+    - url: /local/lovelace-xiaomi-smartfan/xiaomi-smartfan-p8.js
       type: js
     ```
 1. 在视图卡片内添加
     ```yaml
     - entity: fan.entity_id
       name: Fan Name
-      type: 'custom:smartfan-xiaomi'
+      type: 'custom:smartfan-xiaomi-p8'
       translate: #optional for titles in any language
         Angle: 
         Child Lock:
